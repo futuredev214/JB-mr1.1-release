@@ -22,7 +22,6 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.ParcelUuid;
-import android.os.UserHandle;
 import android.util.Log;
 import android.util.Pair;
 
@@ -312,8 +311,8 @@ class AdapterProperties {
                 intent.putExtra(BluetoothAdapter.EXTRA_PREVIOUS_CONNECTION_STATE,
                         convertToAdapterState(prevState));
                 intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT);
-                mService.sendBroadcastAsUser(intent, UserHandle.ALL,
-                        mService.BLUETOOTH_PERM);
+                // mService.sendBroadcastAsUser(intent, UserHandle.ALL, mService.BLUETOOTH_PERM);
+                mService.sendBroadcast(intent, mService.BLUETOOTH_PERM); // Android 4.0.3에 맞게 수정된 Broadcast 전송
                 Log.d(TAG, "CONNECTION_STATE_CHANGE: " + device + ": "
                         + prevState + " -> " + state);
             }
@@ -445,8 +444,8 @@ class AdapterProperties {
                         intent = new Intent(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED);
                         intent.putExtra(BluetoothAdapter.EXTRA_LOCAL_NAME, mName);
                         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT);
-                        mService.sendBroadcastAsUser(intent, UserHandle.ALL,
-                                 mService.BLUETOOTH_PERM);
+                        // mService.sendBroadcastAsUser(intent, UserHandle.ALL, mService.BLUETOOTH_PERM);
+                        mService.sendBroadcast(intent, mService.BLUETOOTH_PERM); // Android 4.0.3에 맞게 수정된 Broadcast 전송
                         debugLog("Name is: " + mName);
                         break;
                     case AbstractionLayer.BT_PROPERTY_BDADDR:

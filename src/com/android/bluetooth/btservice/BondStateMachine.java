@@ -25,7 +25,6 @@ import com.android.bluetooth.hfp.HeadsetService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
-import android.os.UserHandle;
 import android.util.Log;
 
 import com.android.bluetooth.Utils;
@@ -265,8 +264,8 @@ final class BondStateMachine extends StateMachine {
         intent.putExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, oldState);
         if (newState == BluetoothDevice.BOND_NONE)
             intent.putExtra(BluetoothDevice.EXTRA_REASON, reason);
-        mAdapterService.sendBroadcastAsUser(intent, UserHandle.ALL,
-                AdapterService.BLUETOOTH_PERM);
+        // mAdapterService.sendBroadcastAsUser(intent, UserHandle.ALL, AdapterService.BLUETOOTH_PERM);
+        mAdapterService.sendBroadcast(intent, AdapterService.BLUETOOTH_PERM); // Android 4.0.3에 맞게 수정된 Broadcast 전송
         infoLog("Bond State Change Intent:" + device + " OldState: " + oldState
                 + " NewState: " + newState);
     }

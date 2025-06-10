@@ -21,7 +21,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Binder;
 import android.os.ParcelUuid;
-import android.os.UserHandle;
 import android.util.Log;
 
 import java.io.IOException;
@@ -182,7 +181,9 @@ final public class Utils {
         boolean ok;
         // Get the caller's user id then clear the calling identity
         // which will be restored in the finally clause.
-        int callingUser = UserHandle.getCallingUserId();
+
+        // int callingUser = UserHandle.getCallingUserId();
+        int callingUser = 0; // Android 4.0.3 환경에서는 항상 단일 사용자(기본 사용자) ID인 0 사용
         long ident = Binder.clearCallingIdentity();
 
         try {
