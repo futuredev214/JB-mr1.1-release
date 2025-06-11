@@ -1,0 +1,1 @@
+https://github.com/xcover3/android_vendor_samsung_xcover3lte/blob/master/proprietary/lib/hw/bluetooth.default.so

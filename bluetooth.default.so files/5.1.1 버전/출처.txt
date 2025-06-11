@@ -1,0 +1,3 @@
+https://github.com/seemoo-lab/internalblue/blob/master/android/android5_1_1/bluetooth.default.so
+
+https://github.com/francozappa/knob/blob/master/poc-internalblue/internalblue/android_bluetooth_stack/nexus5_android6_0_1/bluetooth.default.so

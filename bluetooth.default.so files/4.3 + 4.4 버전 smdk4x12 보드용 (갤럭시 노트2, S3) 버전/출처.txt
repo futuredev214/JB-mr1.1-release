@@ -1,0 +1,1 @@
+https://github.com/JustArchi/ArchiPort/blob/master/out/system/lib/hw/bluetooth.default.so
